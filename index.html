@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>limpaê - Denúncias</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f5f5;
+      color: #333;
+    }
+    header {
+      background: #2c7a7b;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #2c7a7b;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #285e61;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>limpaê</h1>
+    <nav>
+      <a href="index.html">Denúncias</a>
+      <a href="sobre.html">Sobre Nós</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Faça sua Denúncia</h2>
+    <form action="https://formspree.io/f/manbzgkd" method="POST" enctype="multipart/form-data">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Seu nome">
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" name="email" required placeholder="Seu e-mail">
+
+      <label for="telefone">Telefone:</label>
+      <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+
+      <label for="descricao">Descrição da ocorrência:</label>
+      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+
+      <label for="localizacao">Localização:</label>
+      <input type="text" id="localizacao" name="localizacao" placeholder="Ex: Rua X, nº Y, Bairro Z" required>
+
+      <label for="foto">Anexar foto:</label>
+      <input type="file" id="foto" name="foto" accept="image/*">
+
+      <!-- redireciona para confirmacao.html -->
+      <input type="hidden" name="_redirect" value="https://lalmeida12527.github.io/Limpae/confirmacao.html">
+
+      <button type="submit">Enviar Denúncia</button>
+    </form>
+  </main>
+</body>
+</html>
