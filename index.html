@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limpaê - Denúncias</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+
+<style>
+body { font-family: Arial, sans-serif; margin:0; background:#f2f2f2; color:#333; }
+header { background:#2c7a7b; color:white; padding:20px; text-align:center; }
+nav a { color:white; margin:0 12px; text-decoration:none; font-weight:bold; }
+nav a:hover { text-decoration:underline; }
+main { padding:20px; max-width:750px; margin:auto; }
+h2 { text-align:center; color:#2c7a7b; }
+form { background:white; padding:25px; border-radius:12px; box-shadow:0 0 20px rgba(0,0,0,0.1); }
+label { display:block; margin-top:12px; font-weight:bold; }
+input, textarea, select, button { width:100%; padding:10px; margin-top:5px; border-radius:6px; border:1px solid #ccc; font-size:14px; transition:border 0.2s; }
+input:focus, textarea:focus, select:focus { border-color:#2c7a7b; outline:none; }
+button { background:#2c7a7b; color:white; border:none; cursor:pointer; margin-top:15px; font-weight:bold; font-size:16px; transition:background 0.2s; }
+button:hover { background:#285e61; }
+#map { width:100%; height:350px; margin-top:10px; border-radius:10px; border:1px solid #ccc; }
+@media (max-width:600px){ main { padding:10px; } form { padding:15px; } }
+</style>
+</head>
+<body>
+<header>
+<h1>Limpaê</h1>
+<nav>
+<a href="index.html">Denúncias</a>
+<a href="sobre.html">Sobre Nós</a>
+</nav>
+</header>
+
+<main>
+<h2>Faça sua Denúncia</h2>
+<p>Informe os dados e marque o local exato no mapa.</p>
+
+<form action="https://formspree.io/f/manbzgkd" method="POST">
+<label for="nome">Nome:</label>
+<input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+
+<label for="email">E-mail:</label>
+<input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+
+<label for="telefone">Telefone:</label>
+<input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
+
+<label for="cep">CEP:</label>
+<input type="text" id="cep" name="cep" placeholder="00000-000" required>
+
+<label for="genero">Gênero:</label>
+<select id="genero" name="genero" required>
+<option value="">Selecione</option>
+<option value="masculino">Masculino</option>
+<option value="feminino">Feminino</option>
+<option value="outro">Outro</option>
+</select>
+
+<label for="idade">Faixa etária:</label>
+<select id="idade" name="idade" required>
+<option value="">Selecione</option>
+<option value="0-17">0-17</option>
+<option value="18-25">18-25</option>
+<option value="26-40">26-40</option>
+<option value="41-60">41-60</option>
+<option value="61+">61+</option>
+</select>
+
+<label for="tipo">Tipo de Lixo:</label>
+<select id="tipo" name="tipo" required>
+<option value="">Selecione</option>
+<option value="orgânico">Orgânico</option>
+<option value="reciclável">Reciclável</option>
+<option value="eletrônico">Eletrônico</option>
+<option value="entulho">Entulho</option>
+</select>
+
+<label for="descricao">Descrição da ocorrência:</label>
+<textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+<label for="localizacao">Endereço ou referência:</label>
+<input type="text" id="localizacao" name="localizacao" required>
+
+<label>Local no mapa:</label>
+<div id="map"></div>
+<input type="hidden" name="latlng" id="latlng">
+
+<input type="hidden" name="_redirect" value="https://lalmeida12527.github.io/Limpae/confirmacao.html">
+
+<button type="submit">Enviar Denúncia</button>
+</form>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script>
+// Inicializa mapa em Lauro de Freitas
+const map = L.map('map').setView([-12.8971, -38.3336], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+
+let marker;
+map.on('click', function(e){
+  if(marker) map.removeLayer(marker);
+  marker = L.marker(e.latlng).addTo(map);
+  document.getElementById('latlng').value = e.latlng.lat + ',' + e.latlng.lng;
+});
+
+// Pesquisa limitada a Lauro de Freitas
+L.Control.geocoder({
+  defaultMarkGeocode: false,
+  placeholder: "Pesquisar endereço em Lauro de Freitas...",
+  geocoder: new L.Control.Geocoder.Nominatim({ geocodingQueryParams: { city: "Lauro de Freitas", countrycodes: "BR" } })
+}).on('markgeocode', function(e){
+  const center = e.geocode.center;
+  map.setView(center, 17);
+  if(marker) map.removeLayer(marker);
+  marker = L.marker(center).addTo(map);
+  document.getElementById('latlng').value = center.lat + ',' + center.lng;
+  document.getElementById('localizacao').value = e.geocode.name;
+});
+</script>
+</body>
+</html>
