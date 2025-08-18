@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>limpaê - Denúncias</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -80,7 +81,7 @@
 
   <main>
     <h2>Faça sua Denúncia</h2>
-    <p>Preencha os campos abaixo e marque o ponto no mapa.</p>
+    <p>Preencha os campos abaixo e marque o ponto no mapa ou pesquise o endereço.</p>
 
     <form action="https://formspree.io/f/manbzgkd" method="POST" enctype="multipart/form-data">
       <label for="nome">Nome:</label>
@@ -114,7 +115,6 @@
       <label for="foto">Anexar foto:</label>
       <input type="file" id="foto" name="foto" accept="image/*">
 
-      <!-- redireciona para página de confirmação -->
       <input type="hidden" name="_redirect" value="https://lalmeida12527.github.io/Limpae/confirmacao.html">
 
       <button type="submit">Enviar Denúncia</button>
@@ -122,19 +122,32 @@
   </main>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
   <script>
-    // inicializa o mapa em Lauro de Freitas
     const map = L.map('map').setView([-12.8971, -38.3336], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap'
     }).addTo(map);
 
     let marker;
+
+    // adiciona marcador ao clicar
     map.on('click', function(e) {
       if(marker) map.removeLayer(marker);
       marker = L.marker(e.latlng).addTo(map);
       document.getElementById('latlng').value = e.latlng.lat + ',' + e.latlng.lng;
     });
+
+    // adiciona pesquisa
+    L.Control.geocoder({
+      defaultMarkGeocode: false
+    }).on('markgeocode', function(e) {
+      const center = e.geocode.center;
+      map.setView(center, 17);
+      if(marker) map.removeLayer(marker);
+      marker = L.marker(center).addTo(map);
+      document.getElementById('latlng').value = center.lat + ',' + center.lng;
+    }).addTo(map);
   </script>
 </body>
 </html>
