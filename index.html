@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>limpaê - Denúncias</title>
+  <title>Limpaê! - Denúncias</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f5f5f5;
+      background: #f9f9f9;
       color: #333;
     }
     header {
@@ -28,18 +28,18 @@
     }
     main {
       padding: 20px;
+      max-width: 700px;
+      margin: auto;
     }
     form {
       background: white;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 600px;
-      margin: auto;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
     label {
       display: block;
-      margin-top: 10px;
+      margin-top: 12px;
       font-weight: bold;
     }
     input, textarea, button {
@@ -54,16 +54,24 @@
       color: white;
       border: none;
       cursor: pointer;
+      margin-top: 15px;
       font-weight: bold;
     }
     button:hover {
       background: #285e61;
     }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>limpaê</h1>
+    <h1>Limpaê</h1>
     <nav>
       <a href="index.html">Denúncias</a>
       <a href="sobre.html">Sobre Nós</a>
@@ -72,6 +80,8 @@
 
   <main>
     <h2>Faça sua Denúncia</h2>
+    <p>Preencha o formulário abaixo e ajude a manter Lauro de Freitas mais limpa.</p>
+
     <form action="https://formspree.io/f/manbzgkd" method="POST" enctype="multipart/form-data">
       <label for="nome">Nome:</label>
       <input type="text" id="nome" name="nome" placeholder="Seu nome">
@@ -83,15 +93,18 @@
       <input type="text" id="telefone" name="telefone" placeholder="(00) 00000-0000">
 
       <label for="descricao">Descrição da ocorrência:</label>
-      <textarea id="descricao" name="descricao" rows="5" required></textarea>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
 
-      <label for="localizacao">Localização:</label>
-      <input type="text" id="localizacao" name="localizacao" placeholder="Ex: Rua X, nº Y, Bairro Z" required>
+      <label for="localizacao">Localização (endereço ou ponto de referência):</label>
+      <input type="text" id="localizacao" name="localizacao" required>
+
+      <label>Selecione o local no mapa:</label>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d31328.25696914777!2d-38.3336!3d-12.8971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2sbr!4v0000000000000"></iframe>
 
       <label for="foto">Anexar foto:</label>
       <input type="file" id="foto" name="foto" accept="image/*">
 
-      <!-- redireciona para confirmacao.html -->
+      <!-- redireciona para página de confirmação -->
       <input type="hidden" name="_redirect" value="https://lalmeida12527.github.io/Limpae/confirmacao.html">
 
       <button type="submit">Enviar Denúncia</button>
