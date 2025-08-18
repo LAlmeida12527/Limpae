@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LimpaÊ – Denúncia de Lixo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background: #e0f7fa; color: #333; }
+    header { background: #00acc1; color: #fff; text-align: center; padding: 30px 20px; }
+    header h1 { font-size: 2.5em; }
+    nav { text-align: center; margin-top: 15px; }
+    nav a { margin: 0 15px; color: #fff; text-decoration: none; font-weight: 700; }
+    nav a:hover { text-decoration: underline; }
+    main { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+    form { background: #ffffff; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 15px; }
+    input, select, textarea { padding: 12px; border-radius: 8px; border: 1px solid #ccc; font-size: 1em; width: 100%; }
+    input[type="file"] { padding: 5px; }
+    button { padding: 15px; border: none; border-radius: 10px; background: #00acc1; color: #fff; font-size: 1.1em; cursor: pointer; transition: 0.3s; }
+    button:hover { background: #007c91; }
+    footer { text-align: center; padding: 20px; font-size: 14px; color: #555; margin-top: 40px; }
+    label { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LimpaÊ</h1>
+    <nav>
+      <a href="index.html">Denúncias</a>
+      <a href="sobre.html">Sobre Nós</a>
+    </nav>
+    <p>Denuncie lixo em Lauro de Freitas</p>
+  </header>
+
+  <main>
+    <h2>Registrar Denúncia</h2>
+    <form action="https://formspree.io/f/mayvayln" method="POST" enctype="multipart/form-data">
+      <label for="categoria">Categoria</label>
+      <select id="categoria" name="Categoria" required>
+        <option value="">Selecione...</option>
+        <option value="lixo-domiciliar">Lixo domiciliar</option>
+        <option value="entulho">Entulho/construção</option>
+        <option value="eletronico">Resíduo eletrônico</option>
+        <option value="vegetal">Poda/vegetal</option>
+        <option value="outros">Outros</option>
+      </select>
+
+      <label for="bairro">Bairro</label>
+      <input type="text" id="bairro" name="Bairro" placeholder="Ex.: Itinga" required>
+
+      <label for="endereco">Endereço ou ponto de referência</label>
+      <input type="text" id="endereco" name="Endereço" placeholder="Rua, número, perto de…" required>
+
+      <label for="descricao">Descrição</label>
+      <textarea id="descricao" name="Descrição" placeholder="Descreva o local ou problema"></textarea>
+
+      <label for="contato">Meio de Contato (Email ou Telefone)</label>
+      <input type="text" id="contato" name="Contato" placeholder="Seu email ou telefone" required>
+
+      <label for="arquivo">Anexar Arquivo (opcional)</label>
+      <input type="file" id="arquivo" name="Arquivo">
+
+      <label for="data">Data</label>
+      <input type="date" id="data" name="Data" required>
+
+      <button type="submit">Enviar Denúncia</button>
+    </form>
+  </main>
+
+  <footer>
+    Projeto educativo da Feira de Ciências 
+  </footer>
+</body>
+</html>
