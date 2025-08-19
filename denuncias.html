@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Limpaê - Denúncias</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+</head>
+<body>
+<header>
+  <img src="https://cdn.discordapp.com/attachments/1355379470290391184/1407487450053607516/image.png" alt="Banner Limpaê" class="banner-topo">
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre Nós</a>
+  </nav>
+</header>
+
+<main>
+<section class="denuncias">
+<h1>Denuncie um Local</h1>
+<form id="formDenuncia" action="https://formspree.io/f/manbzgkd" method="POST" enctype="multipart/form-data">
+  <label>CEP:</label>
+  <input type="text" name="cep" placeholder="Ex: 42700-000" required>
+  
+  <label>Tipo de Lixo:</label>
+  <select name="tipoLixo" required>
+    <option value="">Selecione</option>
+    <option value="domiciliar">Lixo Domiciliar</option>
+    <option value="entulho">Entulho</option>
+    <option value="hospitalar">Hospitalar</option>
+  </select>
+  
+  <label>Faixa Etária:</label>
+  <select name="faixaEtaria" required>
+    <option value="">Selecione</option>
+    <option value="0-18">0-18</option>
+    <option value="19-35">19-35</option>
+    <option value="36-60">36-60</option>
+    <option value="61+">61+</option>
+  </select>
+
+  <label>Gênero:</label>
+  <select name="genero" required>
+    <option value="">Selecione</option>
+    <option value="masculino">Masculino</option>
+    <option value="feminino">Feminino</option>
+    <option value="outro">Outro</option>
+  </select>
+
+  <label>Descrição:</label>
+  <textarea name="descricao" rows="4" placeholder="Descreva a situação..." required></textarea>
+
+  <label>Imagem (opcional):</label>
+  <input type="file" name="anexo" accept="image/*">
+
+  <button type="submit">Enviar Denúncia</button>
+</form>
+
+<h2>Localização no Mapa</h2>
+<input id="mapSearch" type="text
