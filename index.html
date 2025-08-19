@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limpaê</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    header {
+      background-color: #2E7D32; /* cor principal baseada na logo */
+      padding: 15px;
+      text-align: center;
+      color: white;
+    }
+
+    header img {
+      max-width: 180px;
+      display: block;
+      margin: 0 auto 10px auto;
+    }
+
+    nav {
+      background-color: #256628; /* verde mais escuro */
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2E7D32;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin: 8px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 15px;
+      width: 100%;
+    }
+
+    button {
+      background-color: #2E7D32;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #256628;
+    }
+
+    footer {
+      background-color: #2E7D32;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Limpaê">
+    <h1>Limpaê</h1>
+  </header>
+
+  <nav>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#denuncias">Denúncias</a>
+  </nav>
+
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>
+      O projeto consiste na criação de um site voltado para denúncias de descarte irregular de lixo na cidade de Lauro de Freitas. 
+      Durante a pesquisa, foi identificado que o município enfrenta problemas recorrentes com acúmulo de resíduos em vias públicas, 
+      terrenos baldios e áreas próximas a córregos, prejudicando a saúde pública e o meio ambiente.
+    </p>
+    <p>
+      A proposta do site surgiu como uma alternativa digital para aproximar a população dos órgãos fiscalizadores, permitindo que qualquer cidadão 
+      possa registrar ocorrências de forma simples e rápida, enviando fotos, descrição e localização exata. Além de servir como ferramenta de denúncia, 
+      o projeto também visa promover educação ambiental, conscientizando sobre os impactos do descarte incorreto e incentivando práticas de destinação adequada dos resíduos.
+    </p>
+    <p>
+      Essa iniciativa busca melhorar a eficiência na coleta de informações, agilizar a resposta das autoridades e contribuir para a construção de uma cidade mais limpa e sustentável.
+    </p>
+  </section>
+
+  <section id="denuncias">
+    <h2>Denúncias</h2>
+    <form action="https://formspree.io/f/manbzgkd" method="POST" enctype="multipart/form-data">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" required>
+
+      <label for="genero">Gênero:</label>
+      <select id="genero" name="genero">
+        <option value="masculino">Masculino</option>
+        <option value="feminino">Feminino</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <label for="idade">Faixa etária:</label>
+      <select id="idade" name="idade">
+        <option value="menor18">Menor de 18</option>
+        <option value="18-25">18 a 25</option>
+        <option value="26-40">26 a 40</option>
+        <option value="41-60">41 a 60</option>
+        <option value="60+">Mais de 60</option>
+      </select>
+
+      <label for="tipoLixo">Tipo de Lixo:</label>
+      <select id="tipoLixo" name="tipoLixo">
+        <option value="domestico">Doméstico</option>
+        <option value="entulho">Entulho</option>
+        <option value="industrial">Industrial</option>
+        <option value="eletronico">Eletrônico</option>
+        <option value="outro">Outro</option>
+      </select>
+
+      <label for="descricao">Descrição da ocorrência:</label>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+      <label for="imagem">Anexar imagem:</label>
+      <input type="file" id="imagem" name="imagem" accept="image/*">
+
+      <button type="submit">Enviar Denúncia</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Limpaê - Todos os direitos reservados</p>
+  </footer>
+</body>
+</html>
