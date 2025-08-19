@@ -1,0 +1,146 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Header e navegação */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: 0.3s;
+}
+
+header.scrolled {
+  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+nav {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #0b4d2d;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #145022;
+}
+
+/* Banner */
+.banner-topo {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero Section */
+.hero {
+  margin-top: 280px; /* espaço para o header fixo + banner */
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(255,255,255,0.9));
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.hero-content button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #2E7D32;
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.hero-content button:hover {
+  background: #145022;
+}
+
+/* Destaque / cards */
+.destaque {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 50px 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 25px;
+  width: 250px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  color: #0b4d2d;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Footer - frases animadas */
+footer {
+  padding: 40px 20px;
+  background: #2E7D32;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
